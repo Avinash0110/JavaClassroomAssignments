@@ -1,29 +1,34 @@
 package com.assignments.assignment8;
 
+import java.util.Scanner;
+
 public class MainException
 {
-    public static void main(String args[])
-    {
-            MainException mainException = new MainException();
-            try
-            {
-                mainException.method();
-            }
-            catch (Exception exception)
-            {
-                System.out.println(exception);
-            }
-            finally
-            {
-                System.out.println("Finally Block code");
-            }
-    }
-    public void method() throws Exception1, Exception2, Exception3
-    {
-        //throw new Exception1("NewException1");
-        //throw new Exception2("NewException2");
-        //throw new Exception3("NewException3");
-        throw new NullPointerException();
+    public static void error(String input) throws Exception1,Exception2,Exception3{
+        if(input.contentEquals(" "))
+            throw new Exception1();
+        else if(input.contains("@"))
+            throw new Exception2();
+        else if(input.contains("!"))
+            throw new Exception3();
+
+
     }
 
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter the name:");
+        try{
+            error(sc.nextLine());
+
+        }catch(Exception1|Exception2|Exception3 e){
+            e.message();
+            e.printStackTrace();
+
+        }finally{
+            System.out.println("\n Always running the final block.........");
+        }
+    }
 }
+
+

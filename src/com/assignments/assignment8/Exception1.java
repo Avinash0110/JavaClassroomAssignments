@@ -1,10 +1,10 @@
 package com.assignments.assignment8;
 
-public class Exception1 extends Exception
-{
-    public Exception1(String newException1)
-    {
-        System.out.println("new exception 1");
-    }
+public class Exception1 extends Exception implements UserException {
 
+
+    public void message() {
+        System.out.println("Throwing MyException1... saying name should not be space");
+
+    }
 }
